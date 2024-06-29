@@ -213,17 +213,17 @@ sudo rm -rf "$GITHUB_WORKSPACE"/vendor_boot
 echo -e "${Red}- 替换 vendor 的 fstab"
 sudo cp -f "$GITHUB_WORKSPACE"/"${device}"_files/fstab.qcom "$GITHUB_WORKSPACE"/"${device}"/vendor/etc/fstab.qcom
 # 替换 Product 的叠加层
-echo -e "${Red}- 替换 product 的叠加层"
-sudo rm -rf "$GITHUB_WORKSPACE"/images/product/overlay/*
-sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/overlay.zip -d "$GITHUB_WORKSPACE"/images/product/overlay
+# echo -e "${Red}- 替换 product 的叠加层"
+# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/overlay/*
+# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/overlay.zip -d "$GITHUB_WORKSPACE"/images/product/overlay
 # 替换 device_features 文件
-echo -e "${Red}- 替换 device_features 文件"
-sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/device_features/*
-sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/device_features.zip -d "$GITHUB_WORKSPACE"/images/product/etc/device_features/
+# echo -e "${Red}- 替换 device_features 文件"
+# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/device_features/*
+# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/device_features.zip -d "$GITHUB_WORKSPACE"/images/product/etc/device_features/
 # 替换 displayconfig 文件
-echo -e "${Red}- 替换 displayconfig 文件"
-sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/*
-sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/displayconfig.zip -d "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/
+# echo -e "${Red}- 替换 displayconfig 文件"
+# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/*
+# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/displayconfig.zip -d "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/
 # 修复精准电量 (亮屏可用时长)
 echo -e "${Red}- 修复精准电量 (亮屏可用时长)"
 sudo rm -rf "$GITHUB_WORKSPACE"/images/system/system/app/PowerKeeper/*
@@ -235,7 +235,7 @@ mkdir "$GITHUB_WORKSPACE"/images/product/app/MiAONService
 sudo cp "$GITHUB_WORKSPACE"/"${device}"_files/MiAONService.apk "$GITHUB_WORKSPACE"/images/product/app/MiAONService
 # 统一 build.prop
 echo -e "${Red}- 统一 build.prop"
-sudo sed -i 's/ro.build.user=[^*]*/ro.build.user=YuKongA/' "$GITHUB_WORKSPACE"/images/system/system/build.prop
+sudo sed -i 's/ro.build.user=[^*]*/ro.build.user=YukieMiona/' "$GITHUB_WORKSPACE"/images/system/system/build.prop
 for port_build_prop in $(sudo find "$GITHUB_WORKSPACE"/images/ -type f -name "build.prop"); do
   sudo sed -i 's/build.date=[^*]*/build.date='"${build_time}"'/' "${port_build_prop}"
   sudo sed -i 's/build.date.utc=[^*]*/build.date.utc='"${build_utc}"'/' "${port_build_prop}"
