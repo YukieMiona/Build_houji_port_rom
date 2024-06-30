@@ -213,17 +213,17 @@ sudo rm -rf "$GITHUB_WORKSPACE"/vendor_boot
 echo -e "${Red}- 替换 vendor 的 fstab"
 sudo cp -f "$GITHUB_WORKSPACE"/"${device}"_files/fstab.qcom "$GITHUB_WORKSPACE"/"${device}"/vendor/etc/fstab.qcom
 # 替换 Product 的叠加层
-# echo -e "${Red}- 替换 product 的叠加层"
-# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/overlay/*
-# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/overlay.zip -d "$GITHUB_WORKSPACE"/images/product/overlay
+echo -e "${Red}- 替换 product 的叠加层"
+sudo rm -rf "$GITHUB_WORKSPACE"/images/product/overlay/*
+sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/overlay.zip -d "$GITHUB_WORKSPACE"/images/product/overlay
 # 替换 device_features 文件
-# echo -e "${Red}- 替换 device_features 文件"
-# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/device_features/*
-# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/device_features.zip -d "$GITHUB_WORKSPACE"/images/product/etc/device_features/
+echo -e "${Red}- 替换 device_features 文件"
+sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/device_features/*
+sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/device_features.zip -d "$GITHUB_WORKSPACE"/images/product/etc/device_features/
 # 替换 displayconfig 文件
-# echo -e "${Red}- 替换 displayconfig 文件"
-# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/*
-# sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/displayconfig.zip -d "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/
+echo -e "${Red}- 替换 displayconfig 文件"
+sudo rm -rf "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/*
+sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/displayconfig.zip -d "$GITHUB_WORKSPACE"/images/product/etc/displayconfig/
 # 修复精准电量 (亮屏可用时长)
 echo -e "${Red}- 修复精准电量 (亮屏可用时长)"
 sudo rm -rf "$GITHUB_WORKSPACE"/images/system/system/app/PowerKeeper/*
@@ -266,10 +266,10 @@ sudo sed -i 's/persist.miui.density_v2=[^*]*/persist.miui.density_v2=480/' "$GIT
 echo -e "${Red}- Add aptX Lossless"
 sudo sed -i '/# end of file/i persist.vendor.qcom.bluetooth.aptxadaptiver2_2_support=true' "$GITHUB_WORKSPACE"/"${device}"/vendor/build.prop
 # 替换相机
-echo -e "${Red}- 替换相机"
-sudo rm -rf "$GITHUB_WORKSPACE"/images/product/priv-app/MiuiCamera/*
-sudo cat "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.1 "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.2 "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.3 >"$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk
-sudo cp -f "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk "$GITHUB_WORKSPACE"/images/product/priv-app/MiuiCamera/
+# echo -e "${Red}- 替换相机"
+# sudo rm -rf "$GITHUB_WORKSPACE"/images/product/priv-app/MiuiCamera/*
+# sudo cat "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.1 "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.2 "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk.3 >"$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk
+# sudo cp -f "$GITHUB_WORKSPACE"/"${device}"_files/MiuiCamera.apk "$GITHUB_WORKSPACE"/images/product/priv-app/MiuiCamera/
 # 替换相机标定（略过）
 # echo -e "${Red}- 替换相机标定"
 # sudo unzip -o -q "$GITHUB_WORKSPACE"/"${device}"_files/CameraTools_beta.zip -d "$GITHUB_WORKSPACE"/images/product/app/
