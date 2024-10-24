@@ -5,11 +5,11 @@ on:
       URL:
         description: "移植包下载地址"
         required: true
-        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.15.0.UNACNXM/miui_AURORA_OS1.0.15.0.UNACNXM_d2975034eb_14.0.zip'
+        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.1.6.0.VNCCNXM.BETA/houji-ota_full-OS1.1.6.0.VNCCNXM.BETA-user-15.0-b909917ae6.zip'
       VENDOR_URL:
         description: "底包下载地址"
         required: true
-        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.24.7.12.DEV/miui_HOUJI_OS1.0.24.7.12.DEV_4a11fe5c9b_14.0.zip'
+        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.1.6.0.VNCCNXM.BETA/houji-ota_full-OS1.1.6.0.VNCCNXM.BETA-user-15.0-b909917ae6.zip'
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p "$GITHUB_WORKSPACE"/GithubRelease
           cd "$GITHUB_WORKSPACE"/GithubRelease
-          sudo split -b 1945M -d -a 3 "$GITHUB_WORKSPACE"/zip/${{ env.rom_name }} ${{ env.rom_name }}.
+          sudo split -b 1975M -d -a 3 "$GITHUB_WORKSPACE"/zip/${{ env.rom_name }} ${{ env.rom_name }}.
           cd "$GITHUB_WORKSPACE"
           touch file.log
           echo -e "底包版本: ${{ env.vendor_os_version }}\n底包安全补丁版本: ${{ env.vendor_security_patch }}\n底包基线版本: ${{ env.vendor_base_line}}\n\n移植包版本: ${{ env.port_os_version }}\n移植包安全补丁版本: ${{ env.port_security_patch }}\n移植包基线版本: ${{ env.port_base_line }}" > file.log
